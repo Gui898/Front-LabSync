@@ -1,0 +1,79 @@
+:root{
+    --main-color: #F7F7F7;
+    --secondary-color: #52b9cd;
+    --font-color: #333;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--main-color);
+    color: var(--font-color);
+}
+
+header{
+    background-color: var(--secondary-color);
+    text-align: center;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo_img{
+    width: 20rem;
+}
+
+.logo_img:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+
+.perfil_symbol{
+    width: 6rem;
+    height: auto;
+}
+
+.perfil_symbol:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+
+.search_container{
+    width: 40%;
+    display: flex;
+    align-items: center;
+}
+
+.search_bar{
+    width: 100%; 
+    padding: 10px;
+    border: none;
+    border-radius: 16px 0 0 16px;
+    font-size: 1.5rem;
+}
+
+.search_lupa{
+    width: 2rem;
+}
+
+.search_button{
+    background-color: var(--main-color);
+    border: none;
+    cursor: pointer;
+    padding: 0.4rem;
+    border-radius: 0 16px 16px 0;
+}
+
+
+
