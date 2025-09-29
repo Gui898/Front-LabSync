@@ -1,0 +1,106 @@
+@import url('/styles/styles.css');
+
+body{
+    background-image: url('/assets/TelaLogin.png');
+    background-size: cover;     
+    background-position: center; 
+    height: 100vh;
+    font-size: 24px;
+    font-family: var(--main-font);
+}
+
+main{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    margin: 0 5rem;
+    gap: 10rem;
+}
+
+.container__left{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.slogan{
+    color: var(--main-font-color);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-left: 1rem;
+}
+
+.container__right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    padding: 0 2rem;
+    height: 26rem;
+    width: 25rem;
+    border-radius: 24px;
+}
+
+.login__form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.logo__img{
+    width: 35rem;
+    height: auto;
+}
+
+input{
+    width: 20rem;
+    color: var(--main-font-color);
+    height: 3rem;
+    border-radius: 12px;
+    border: none;
+    padding: 0 1rem;
+    font-size: 1rem;
+    background-color: var(--second-color);
+}
+
+input::placeholder{
+    color: var(--main-font-color);
+}
+
+input:focus{
+    transform: scale(1.02);
+}
+
+.enter__bt{
+    background-color: var(--third-color);
+    font-size: 1.5rem;
+    font-family: var(--second-font);
+    color: var(--main-font-color);  
+    border: none;
+    border-radius: 12px;
+    padding: 0.5rem 6rem;
+    margin-top: 1rem;
+}
+
+
+.register__bt{
+    background-color: var(--color-accent);
+    font-family: var(--second-font);
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--main-font-color);  
+    border: none;
+    border-radius: 12px;
+    padding: 0.8rem 3rem;
+    margin-top: 1rem;
+}
+
+.enter__bt:hover , .register__bt:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.3s ease-in-out;
+}
