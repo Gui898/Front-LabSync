@@ -1,19 +1,13 @@
 @import url('/styles/styles.css');
 
 body{
+    box-sizing: border-box;
     background-image: url('/assets/TelaLogin.png');
     background-size: cover;     
     background-position: center; 
-    height: 100vh;
-    font-size: 24px;
-    font-family: var(--main-font);
-}
-
-main{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100vh;
     margin: 0 5rem;
     gap: 10rem;
 }
@@ -57,14 +51,14 @@ main{
 }
 
 input{
-    width: 20rem;
+    background-color: var(--second-color);
     color: var(--main-font-color);
+    width: 20rem;
     height: 3rem;
     border-radius: 12px;
     border: none;
     padding: 0 1rem;
     font-size: 1rem;
-    background-color: var(--second-color);
 }
 
 input::placeholder{

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/register.css">
+    <script src="../script/registerLogin.js"></script>
+    <title>LabSync Cadastro</title>
+</head>
+
+<body>
+    <div class="container__left">
+        <h2>Crie uma conta</h2>
+        <hr>
+        <form id="registerForm" class="register__form" action="/register">
+            <input type="text" class="input__reg" id="name" name="name" placeholder="Nome de usuário" required>
+            <input type="text" class="input__reg" id="surname" name="surname" placeholder="Apelido" required>
+            <input type="email" class="input__reg" id="email" name="email" placeholder="Email" required>
+            <input type="password" class="input__reg" id="password" name="password" placeholder="Senha" required>
+            <div class="radios">
+                <div>
+                    <input type="radio" name="readerOrAuthor" id="readerPoint" class="radioIn">
+                    <label for="readerPoint">Leitor</label>
+                </div>
+
+                <div>
+                    <input type="radio" name="readerOrAuthor" id="authorPoint" class="radioIn">
+                    <label for="authorPoint">Autor</label>
+                </div> 
+            </div>
+            <input type="email" class="input__reg academic" id="email_academico" name="email" placeholder="Email acadêmico" required>
+            <button type="submit" class="register__bt">Cadastrar</button>
+    </div>
+
+    <div class="container__right">
+        <img src="../assets/perfilPhoto.png" alt="Foto de perfil" class="profile__photo">
+        <label for="fileInput" class="custom__file">Upload de imagem</label>
+        <input type="file" id="fileInput" class="file__input">
+    </div>
+</body>
+
+</html>

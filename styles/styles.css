@@ -4,8 +4,17 @@
     --primary-color: #2B3233;
     --second-color: #43666B;
     --third-color: #39B0BF;
+    --fourth-color: #1A4247;
+    --fifth-color: #458D96;
     --color-accent: #EB771E;
     --main-font-color: #FFFFFF;
     --main-font: "Montserrat", sans-serif;
     --second-font: "Inter", sans-serif;;
+}
+
+body{
+    height: 100vh;
+    font-size: 24px;
+    font-family: var(--main-font);
+    color: var(--main-font-color);
 }
