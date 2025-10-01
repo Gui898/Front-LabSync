@@ -18,3 +18,32 @@ body{
     font-family: var(--main-font);
     color: var(--main-font-color);
 }
+
+/*General Header*/
+
+header{
+    background-color: var(--third-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.logo{
+    width: 18rem;
+}
+
+.profile__nav{
+    width: 6rem;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1.5rem;
+}
+
+.profile__set{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}

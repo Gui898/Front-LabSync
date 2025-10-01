@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/userConfig.css">
+    <title>Configurações de usuário</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="../index.html"><img class="logo" src="../assets/LogoLabSync.png" alt="Logo LabSync"></a>
+
+            <div class="profile__set">
+                <p class="surname">Apelido</p>
+                <img class="profile__nav" src="../assets/perfilPhoto.png" alt="Foto de perfil">
+                <button class="exit__bt">Sair</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container__left">
+            <img class="profile" src="../assets/perfilPhoto.png" alt="Foto de perfil">
+            <label for="fileInput" class="custom__file">Editar foto</label>
+            <input type="file" id="fileInput" class="file__input">
+        </div>
+
+        <form action="put" class="container__right">
+            <div class="input__group">
+                <label for="username">Nome de usuário</label>
+                <input class="inputs" type="text" id="username" placeholder="Insira seu texto...">
+            </div>
+
+            <div class="input__group">
+                <label for="surname">Apelido</label>
+                <input class="inputs" type="text" id="surname" placeholder="Insira seu texto...">
+            </div>
+
+            <div class="input__group">
+                <label for="email">Email</label>
+                <input class="inputs" type="text" id="email" placeholder="Insira seu texto...">
+            </div>
+
+            <div class="input__group">
+                <label for="password">Senha</label>
+                <input class="inputs" type="text" id="password" placeholder="Insira seu texto...">
+            </div>
+
+            <div class="input__group">
+                <label for="aboutMe">Sobre mim</label>
+                <textarea class="inputs" type="text" id="aboutMe" placeholder="Insira seu texto..."></textarea>
+            </div>
+
+            <button class="save__bt">Salvar</button> 
+        </form>
+    </main>
+
+</body>
+
+</html>

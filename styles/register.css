@@ -41,8 +41,9 @@ hr{
 }
 
 .input__reg{
-    background-color: var(--main-color);
+    background-color: transparent;
     color: var(--main-font-color);
+    font-family: var(--main-font);
     width: 20rem;
     height: 2.5rem;
     border-radius: 24px;
@@ -57,6 +58,7 @@ hr{
 
 .input__reg:focus{
     transform: scale(1.02);
+    outline: none;
 }
 
 .academic{
