@@ -14,6 +14,13 @@ body{
     border-radius: 32px;
     padding: 0.5rem 2rem;
     cursor: pointer;
+    transform: scale(1);
+    transition: 0.3s ease-in-out;
+}
+
+.exit__bt:hover{
+    transform: scale(1.1);
+    transition: 0.3s ease-in-out;
 }
 
 /*Config Body*/
@@ -50,10 +57,14 @@ main{
     font-size: 1.5rem;
     display: inline-block;
     margin-top: 2rem;
+    transform: scale(1);
+    transition: 0.3s ease-in-out;
 }
 
 .custom__file:hover {
     background-color: #45a049;
+    transform: scale(1.1);
+    transition: 0.3s ease-in-out;
 }
 
 .file__input {
@@ -106,6 +117,8 @@ main{
     border-radius: 12px;
     padding: 0.5rem 5rem;
     margin-top: 1rem;
+    transform: scale(1);
+    transition: 0.3s ease-in-out;
 }
 
 .save__bt:hover{

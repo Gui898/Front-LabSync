@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/register.css">
-    <script src="../script/registerLogin.js"></script>
+    <script src="../script/register.js" defer></script>
     <title>LabSync Cadastro</title>
 </head>
 
@@ -13,7 +13,7 @@
     <div class="container__left">
         <h2>Crie uma conta</h2>
         <hr>
-        <form id="registerForm" class="register__form" action="/register">
+        <form id="registerForm" class="register__form">
             <input type="text" class="input__reg" id="name" name="name" placeholder="Nome de usuário" required>
             <input type="text" class="input__reg" id="surname" name="surname" placeholder="Apelido" required>
             <input type="email" class="input__reg" id="email" name="email" placeholder="Email" required>
@@ -29,7 +29,7 @@
                     <label for="authorPoint">Autor</label>
                 </div> 
             </div>
-            <input type="email" class="input__reg academic" id="email_academico" name="email" placeholder="Email acadêmico" required>
+            <input type="email" class="input__reg academic" id="email_academico" name="academicEmail" placeholder="Email acadêmico">
             <button type="submit" class="register__bt">Cadastrar</button>
     </div>
 
