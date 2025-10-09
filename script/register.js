@@ -5,13 +5,15 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     const surname = document.getElementById('surname').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    let academicEmail = null;
+    let academicEmailInput = document.getElementById('email_academico');
     let isAuthor = document.getElementById('authorPoint').checked;
 
     if(isAuthor){
-        academicEmail = document.getElementById('email_academico').value;
+        academicEmailInput.setAttribute('required', '');
+        var academicEmail = academicEmailInput.value;
     }else{
-        isAuthor = false;
+        academicEmailInput.removeAttribute('required');
+        academicEmail = null;
     }
 
     const user = {
