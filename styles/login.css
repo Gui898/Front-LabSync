@@ -38,6 +38,20 @@ body{
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
 }
 
+.invalid__inputs__text{
+    display: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--error-color);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.valid__inputs__text{
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--ok-color); 
+}
+
 .login__form{
     display: flex;
     flex-direction: column;

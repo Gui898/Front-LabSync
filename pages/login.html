@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/login.css">
-    <script src="../script/registerLogin.js"></script>
+    <script src="../script/login.js" defer></script>
     <title>LabSync Login</title>
 </head>
 
@@ -16,7 +16,12 @@
     </div>
 
     <div class="container__right">
-        <form method="post" accept="/login" id="runLogin" class="login__form">
+        <form id="runLogin" class="login__form">
+            <p class="invalid__inputs__text" id ="invalidInputs">*Usuário ou senha inválidos</p>
+            <div class="valid__inputs" id ="validInputs">
+                <p class="valid__inputs__text">Logando</p>
+                <img src="../assets/loading.png" alt="icone carregando" class="login__load">
+            </div>
             <input type="text" name="username" id="username" placeholder="Nome de Usuário" required>
             <input type="password" name="password" id="password" placeholder="Senha" required>
             <button type="submit" class="enter__bt">Entrar</button>

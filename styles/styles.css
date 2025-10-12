@@ -5,7 +5,10 @@
     --second-color: #43666B;
     --third-color: #39B0BF;
     --fourth-color: #1A4247;
-    --fifth-color: #458D96;
+    --fifth-color: #53B6C9;
+    --ok-color: green;
+    --verify-color: rgb(230, 230, 74);
+    --error-color: rgb(247, 60, 60);
     --color-accent: #EB771E;
     --main-font-color: #FFFFFF;
     --main-font: "Montserrat", sans-serif;
@@ -46,4 +49,31 @@ nav{
     justify-content: space-between;
     align-items: center;
     gap: 1.5rem;
+}
+
+/*ANIMATIONS*/
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes loading {
+  100% {
+    rotate: 360deg;
+  }
+}
+
+@keyframes loading-dots {
+  0%   { content: ""; }
+  33%  { content: "."; }
+  66%  { content: ".."; }
+  100% { content: "..."; }
 }

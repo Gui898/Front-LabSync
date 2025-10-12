@@ -1,0 +1,139 @@
+@import url("styles.css");
+
+body{
+    background-color: var(--fourth-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 8rem;
+}
+
+.container__left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--primary-color);
+    padding: 1.5rem 4rem;
+    width: 30rem;
+    height: auto;
+    border-radius: 24px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+}
+
+h2{
+    color: white;
+    font-size: 2rem;
+    font-family: var(--main-font);
+}
+
+hr{
+    width: 100%;
+    border: solid 2px var(--second-color);
+    margin-bottom: 1.5rem;
+}
+
+.register__form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.input__reg{
+    background-color: transparent;
+    color: var(--main-font-color);
+    font-family: var(--main-font);
+    width: 20rem;
+    height: 2.5rem;
+    border-radius: 24px;
+    border: 3px solid var(--fifth-color);
+    padding: 0 1rem;
+    font-size: 1rem;
+}
+
+.input__reg::placeholder{
+    color: var(--main-font-color);
+}
+
+.input__reg:focus{
+    transform: scale(1.02);
+    outline: none;
+}
+
+.valid__inputs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.valid__inputs__text{
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--verify-color); 
+}
+
+.valid__inputs__text .dots::after {
+  content: "";
+  animation: loading-dots 1s steps(3, end) infinite;
+}
+
+.register__bt{
+    background-color: var(--color-accent);
+    font-family: var(--second-font);
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--main-font-color);  
+    border: none;
+    border-radius: 12px;
+    padding: 0.5rem 5rem;
+    margin-top: 1rem;
+    transform: scale(1);
+    transition: 0.3s ease-in-out;
+}
+
+.register__bt:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.3s ease-in-out;
+}
+
+.container__right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 5rem;
+}
+
+.profile__photo{
+    width: 15rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+}
+
+.file__input {
+    display: none;
+}
+
+.custom__file {
+    background-color: var(--third-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: inline-block;
+    margin-top: 2rem;
+    transform: scale(1);
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.custom__file:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+    transition: 0.3s ease-in-out;
+}
