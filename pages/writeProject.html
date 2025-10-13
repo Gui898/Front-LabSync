@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/writeProject.css">
+    <script src="../script/writeProject.js" defer></script>
+    <title>LabSync Editor</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="../index.html"><img class="logo" src="../assets/LogoLabSync.png" alt="Logo LabSync"></a>
+            <div class="search__bar">
+                <input type="text" class="search__input" placeholder="Pesquisar">
+                <button class="search__bt"><img src="../assets/lupa.png" alt="imagem de lupa"
+                        class="search__lupa"></button>
+            </div>
+            <div class="profile__set">
+                <p class="surname">Apelido</p>
+                <img class="profile__nav" src="../assets/perfilPhoto.png" alt="Foto de perfil">
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="container">
+            <div class="command__bar">
+                <button class="funcs__bt"><img src="../assets/arrowLeft.png" class="img__bar"></button>
+                <button class="funcs__bt"><img src="../assets/arrowRight.png" class="img__bar"></button>
+                <hr class="inverted__hr">
+                <button class="funcs__bt"><img src="../assets/Q.png" class="img__bar"></button>
+                <button class="funcs__bt"><img src="../assets/T.png" class="img__bar"></button>
+                <button class="funcs__bt"><img src="../assets/changeColor.png" class="img__bar"></button>
+                <button class="funcs__bt"><img src="../assets/pen.png" class="img__bar"></button>
+                <hr class="inverted__hr">
+                <h3>Estilos <span><img src="../assets/ArrowDown.png"></span></h3>
+                <button class="funcs__bt"><img src="../assets/B.png" class="img__bar"></button>
+                <button class="funcs__bt"><img src="../assets/italic.png" class="img__bar"></button>
+                <button class="funcs__bt"><img src="../assets/underline.png" class="img__bar"></button>
+                <button class="funcs__bt"><img src="../assets/tachado.png" class="img__bar"></button>
+                <hr class="inverted__hr">
+                <button class="funcs__bt"><img src="../assets/linkSymbol.png" class="img__bar"></button>
+                <button class="funcs__bt"><img src="../assets/imageSymbol.png" class="img__bar"></button>
+                <button class="funcs__bt"><img src="../assets/videoSymbol.png" class="img__bar"></button>
+                <hr class="inverted__hr">
+                <button class="funcs__bt"><img src="../assets/paragraph.png" class="img__bar"></button>
+                <button class="funcs__bt"><img src="../assets/formatation.png" class="img__bar"></button>
+                <button class="funcs__bt"><img src="../assets/diminuirRecuo.png" class="img__bar"></button>
+                <button class="funcs__bt"><img src="../assets/aumentarRecuo.png" class="img__bar"></button>
+            </div>
+            <hr>
+            <div class="container__below">
+                <div class="container__text">
+                    <div class="other__box" id="titleBox" contenteditable="true" data-placeholder="Título:"></div>
+                    <hr class="text__hr">
+                    <div class="other__box" id="categoryBox" contenteditable="true" data-placeholder="Categoria:"></div>
+                    <hr class="text__hr">
+                    <div class="text__box" id="textBox" contenteditable="true"></div>
+                    <hr class="text__hr">
+                    <div class="other__box" id="usedInst" contenteditable="true" data-placeholder="Instrumentos usados:"></div>
+                    <hr class="text__hr">
+                    <div class="other__box" id="usedTech" contenteditable="true" data-placeholder="Tecnologias usadas:"></div>
+                </div>
+
+                <aside class="options">
+                    <button class="side__bt"><img src="../assets/eyeSymbol.png">Visualizar</button>
+                    <button class="side__bt"><img src="../assets/updateSymbol.png">Atualizar</button>
+                    <button class="side__bt"><img src="../assets/shareSymbol.png">Publicar</button>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>

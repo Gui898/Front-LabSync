@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/projectDraft.css">
+    <title>LabSync Rascunhos</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html"><img class="logo" src="../assets/LogoLabSync.png" alt="Logo LabSync"></a>
+            <div class="search__bar">
+                <input type="text" class="search__input" placeholder="Pesquisar">
+                <button class="search__bt"><img src="../assets/lupa.png" alt="imagem de lupa" class="search__lupa"></button>
+            </div>
+            <div class="profile__set">
+                <p class="surname">Apelido</p>
+                <img class="profile__nav" src="../assets/perfilPhoto.png" alt="Foto de perfil">
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="container">
+            <div class="drafts__container">
+                <h2 class="drafts__title"><img src="../assets/asteriskDraft.png" alt="icone de asterisco">
+                    Rascunhos de projetos
+                </h2>
+                <p class="drafts__count">Total: <span id="draftsTotal">--</span></p>
+            </div>
+            <div id="projectsGrid" class="projects__grid">
+                <div class="first__card">
+                    <h3>Novo Projeto</h3>
+                    <p class="plus__symbol">+</p>
+                </div>
+                <!--Os projtos serão inseridos pelo JS aqui-->
+            </div>
+
+            <button id="loadMoreBtn" class="load__more">Carregar mais</button>
+        </section>
+    </main>
+</body>
+</html>

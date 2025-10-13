@@ -1,0 +1,131 @@
+@import url("styles.css");
+
+body {
+    background-color: var(--second-color);
+}
+
+.container {
+    background-color: var(--primary-color);
+    margin: 0 5rem;
+    margin-top: 3rem;
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+}
+
+.command__bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+hr {
+    border: 2px solid var(--second-color);
+}
+
+.inverted__hr {
+    height: 3rem;
+}
+
+.funcs__bt {
+    background-color: var(--primary-color);
+    border: none;
+    margin: 0 .3rem;
+    transform: scale(1);
+    transition: 0.2s ease-in-out;
+}
+
+.funcs__bt:hover {
+    background-color: var(--second-color);
+    transform: scale(1.1);
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.container__below {
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem;
+}
+
+.container__text {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--sheet-back-color);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+}
+
+.text__box {
+    background-color: var(--sheet-back-color);
+    color: var(--second-font-color);
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 300px;
+    width: 600px;
+    outline: none;
+    font-size: 24px;
+    line-height: 1.6;
+    border: none;
+}
+
+.text__box:empty::before {
+  content: "Inserir texto...";
+  color: #888;
+  pointer-events: none;
+}
+
+.other__box {
+    border-radius: 16px;
+    background-color: var(--sheet-back-color);
+    color: var(--second-font-color);
+    line-height: 1.6;
+    width: 500px;
+    padding: 1rem;
+    border: none;
+    outline: none;
+}
+
+.other__box:empty::before {
+  content: attr(data-placeholder);
+  color: #888;
+  pointer-events: none;
+}
+
+.text__hr{
+    width: 95%;
+}
+
+.options {
+    background-color: var(--sixth-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: stretch;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    padding: 2rem;
+    border-radius: 16px;
+    height: fit-content;
+    box-shadow: var(--shadow);
+}
+
+.side__bt{
+    background-color: transparent;
+    font-size: 2rem;
+    color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    border-radius: 16px;
+    border: 3px solid var(--primary-color);
+    transition: .3s ease-in-out;
+}
+
+.side__bt:hover{
+    transform: scale(1.1);
+    transition: .3s ease-in-out;
+    cursor: pointer;
+}
