@@ -61,10 +61,49 @@ document.getElementById("editForm").addEventListener("submit", (e) => {
 document.getElementById("deleteUser").addEventListener("click", (e) => {
     e.preventDefault();
 
+    //Deleting user's favorites
+    fetch("http://localhost:8080/favorite/user/" + loggedUser.idUser, {
+        method: "DELETE",
+    })
+        .then(async res => {
+            if (!res.ok) {
+                const data = await res.json().catch(() => ({}));
+                const msg = data.message || 'Erro desconhecido na configuração de usuário';
+                throw new Error(msg);
+            }
+        })
+        .catch(err => console.log(err));
+
+
+    //Deleting user's posts
+    fetch("http://localhost:8080/posts/user/" + loggedUser.idUser, {
+        method: "DELETE",
+    })
+        .then(async res => {
+            if (!res.ok) {
+                const data = await res.json().catch(() => ({}));
+                const msg = data.message || 'Erro desconhecido na configuração de usuário';
+                throw new Error(msg);
+            }
+        })
+        .catch(err => console.log(err));
+
+    //Deleting user's projects
+    fetch("http://localhost:8080/project/user/" + loggedUser.idUser, {
+        method: "DELETE"
+    })
+        .then(async res => {
+            if (!res.ok) {
+                const data = await res.json().catch(() => ({}));
+                const msg = data.message || 'Erro desconhecido na configuração de usuário';
+                throw new Error(msg);
+            }
+        })
+        .catch(err => console.log(err));
+
+    //Deleting user
     fetch("http://localhost:8080/user/" + loggedUser.idUser, {
         method: "DELETE",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(loggedUser)
     })
         .then(res => {
             if (!res.ok) {

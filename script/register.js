@@ -41,6 +41,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     })
     .then((result) => {
       alert("Usuário criado: " + result.name);
+      setTimeout(() => window.location.href = "../pages/login.html");
     })
     .catch((err) => {
       console.error("Erro no fetch:", err);
