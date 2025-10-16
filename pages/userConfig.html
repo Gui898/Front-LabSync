@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/userConfig.css">
+    <script src="../script/userConfig.js" defer></script>
+    <script src="../script/commum.js" defer></script>
     <title>Configurações de usuário</title>
 </head>
 
@@ -14,9 +16,8 @@
             <a href="../index.html"><img class="logo" src="../assets/LogoLabSync.png" alt="Logo LabSync"></a>
 
             <div class="profile__set">
-                <p class="surname">Apelido</p>
+                <p class="userName" id="userName">Apelido</p>
                 <img class="profile__nav" src="../assets/perfilPhoto.png" alt="Foto de perfil">
-                <!--Redirecionar para o o login.html-->
                 <button class="exit__bt">Sair</button>
             </div>
         </nav>
@@ -27,11 +28,12 @@
             <img class="profile" src="../assets/perfilPhoto.png" alt="Foto de perfil">
             <label for="fileInput" class="custom__file">Editar foto</label>
             <input type="file" id="fileInput" class="file__input">
-            <a href="favoriteProjects.html" class="redirect__bt">Projetos favoritos</a>
-            <a href="draftProjects.html" class="redirect__bt">Rascunhos de Projetos</a>
+            <a href="./favorites.html" class="redirect__bt">Projetos favoritos</a>
+            <a href="./projectDrafts.html" class="redirect__bt">Rascunhos de Projetos</a>
+            <button class="redirect__bt delete">Deletar usuário</button>
         </div>
 
-        <form action="put" class="container__right">
+        <form class="container__right" id="editForm">
             <div class="input__group">
                 <label for="username">Nome de usuário</label>
                 <input class="inputs" type="text" id="username" placeholder="Insira seu texto...">
