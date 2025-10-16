@@ -1,0 +1,145 @@
+@import url("styles.css");
+
+body{
+    background-color: var(--second-color);
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+main{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 10rem;
+    margin: 3rem;
+    margin-top: 10rem;
+}
+
+.side__container{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.side__container:first-of-type{
+    left: 3rem;
+}
+
+.side__container:last-of-type {
+    right: 3rem;
+}
+
+.side__container__anc{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.lateral__img{
+    width: 30%;
+    margin-right: 1rem;
+}
+
+.becker__img{
+    width: 28%;
+}
+
+.lateral__elements{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: 1rem;
+    color: var(--fourth-color);
+    font-weight: 600;
+    text-decoration: none;
+    transition: .3s ease-in-out;
+}
+
+.lateral__elements:hover{
+    transform: scale(1.1);
+    transition: .3s ease-in-out;
+}
+
+.vertical__hr {
+    width: 3px;
+    height: 400px;
+    background-color: var(--fourth-color);
+    border: none;
+    margin: 0 1rem;
+}
+
+.post__container{
+    flex: 1;
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 3rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    margin: 0 22rem;
+    margin-bottom: 5rem;
+}
+
+.post__owner{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.post__profile{
+    width: 15%;
+    margin-right: 1rem;
+}
+
+.post__content{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.project__content {
+    background-color: white;
+    border-radius: 4px;
+    padding: 1rem;
+    color: black;
+    min-height: 300px;
+    width: 60%;
+    overflow-wrap: break-word;
+    user-select: text; /*can copy, but not edit*/
+}
+
+.post__details{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.dislike{
+    rotate: 180deg;
+}
+
+.content__bt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    color: var(--main-font-color);
+    border: none;
+    gap: 10px;
+    transition: .3s ease-in-out;
+}
+
+.content__bt:hover{
+    transform: scale(1.1);
+    transition: .3s ease-in-out;
+    cursor: pointer;
+}

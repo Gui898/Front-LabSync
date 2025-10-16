@@ -46,10 +46,23 @@ body{
     animation: pulse 2s ease-in-out infinite;
 }
 
+.valid__inputs{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
 .valid__inputs__text{
     font-size: 1rem;
     font-weight: bold;
     color: var(--ok-color); 
+}
+
+.login__load{
+    width: 5%;
+    animation: loading 1s linear infinite;
 }
 
 .login__form{
