@@ -30,7 +30,8 @@ main{
     display: flex;
     justify-content: space-between;
     align-items: start;
-    padding: 5rem 8rem;
+    gap: 2rem;
+    padding: 5rem 4rem;
     margin: 5rem 8rem;
     border-radius: 24px 24px 0 0;
     box-sizing: border-box;
@@ -135,6 +136,32 @@ main{
     font-family: var(--main-font);
 }
 
+.invalid__inputs__text{
+    display: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--error-color);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.valid__inputs{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.valid__inputs__text{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--ok-color); 
+}
+
+.load{
+    width: 5%;
+    animation: loading 1s linear infinite;
+}
 
 .save__bt{
     background-color: var(--color-accent);

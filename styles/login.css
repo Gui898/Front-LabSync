@@ -60,7 +60,7 @@ body{
     color: var(--ok-color); 
 }
 
-.login__load{
+.load{
     width: 5%;
     animation: loading 1s linear infinite;
 }

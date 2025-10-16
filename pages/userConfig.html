@@ -18,7 +18,7 @@
             <div class="profile__set">
                 <p class="userName" id="userName">Apelido</p>
                 <img class="profile__nav" src="../assets/perfilPhoto.png" alt="Foto de perfil">
-                <button class="exit__bt">Sair</button>
+                <button class="exit__bt" id="exitBt">Sair</button>
             </div>
         </nav>
     </header>
@@ -30,7 +30,7 @@
             <input type="file" id="fileInput" class="file__input">
             <a href="./favorites.html" class="redirect__bt">Projetos favoritos</a>
             <a href="./projectDrafts.html" class="redirect__bt">Rascunhos de Projetos</a>
-            <button class="redirect__bt delete">Deletar usuário</button>
+            <button class="redirect__bt delete" id="deleteUser">Deletar usuário</button>
         </div>
 
         <form class="container__right" id="editForm">
@@ -57,6 +57,12 @@
             <div class="input__group">
                 <label for="aboutMe">Sobre mim</label>
                 <textarea class="inputs" type="text" id="aboutMe" placeholder="Insira seu texto..."></textarea>
+            </div>
+
+            <p class="invalid__inputs__text" id ="invalidInputs">*Verifique as informações novamente</p>
+            <div class="valid__inputs" id ="validInputs">
+                <p class="valid__inputs__text">Salvando informações</p>
+                <img src="../assets/loading.png" alt="icone carregando" class="load">
             </div>
 
             <button class="save__bt">Salvar</button> 
