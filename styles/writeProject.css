@@ -30,7 +30,7 @@ hr {
 .funcs__bt {
     background-color: var(--primary-color);
     border: none;
-    margin: 0 .3rem;
+    margin: 0 0.15rem;
     transform: scale(1);
     transition: 0.2s ease-in-out;
 }
@@ -40,6 +40,24 @@ hr {
     transform: scale(1.1);
     transition: 0.2s ease-in-out;
     cursor: pointer;
+}
+
+.font__input{
+    display: none;
+}
+
+.font__custom{
+    color: var(--fifth-color);
+    font-weight: 600;
+}
+
+.font__custom:hover{
+    cursor: pointer;
+    background-color: var(--second-color);
+    padding: 0.5rem 0;
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.3s ease-in-out;
 }
 
 .container__below {
@@ -128,4 +146,20 @@ hr {
     transform: scale(1.1);
     transition: .3s ease-in-out;
     cursor: pointer;
+}
+
+.change{
+    display: none;
+}
+
+.custom__change{
+    display: inline-block;
+    transition: 0.3s ease-in-out;
+}
+
+.custom__change:hover{
+    background-color: var(--second-color);
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.3s ease-in-out;
 }

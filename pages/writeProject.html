@@ -30,30 +30,88 @@
     <main>
         <section class="container">
             <div class="command__bar">
-                <button class="funcs__bt"><img src="../assets/arrowLeft.png" class="img__bar"></button>
-                <button class="funcs__bt"><img src="../assets/arrowRight.png" class="img__bar"></button>
+                <button class="funcs__bt" id="undo">
+                    <img src="../assets/arrowLeft.png" class="img__bar">
+                </button>
+
+                <button class="funcs__bt" id="redo">
+                    <img src="../assets/arrowRight.png" class="img__bar">
+                </button>
+
                 <hr class="inverted__hr">
-                <button class="funcs__bt"><img src="../assets/Q.png" class="img__bar"></button>
-                <button class="funcs__bt"><img src="../assets/T.png" class="img__bar"></button>
-                <button class="funcs__bt"><img src="../assets/changeColor.png" class="img__bar"></button>
-                <button class="funcs__bt"><img src="../assets/pen.png" class="img__bar"></button>
+
+                <label for="font-size" class="custom__change funcs__bt">
+                    <img src="../assets/T.png" class="img__bar">
+                </label>
+                <select id="font-size" class="change"></select>
+
+                <label for="changeHighight" class="custom__change funcs__bt">
+                    <img src="../assets/pen.png" class="img__bar">
+                </label>
+                <input type="color" class="change" id="changeHighight">
+
+                <label for="changeColor" class="custom__change funcs__bt">
+                    <img src="../assets/changeColor.png" class="img__bar">
+                </label>
+                <input type="color" class="change" id="changeColor">
+
                 <hr class="inverted__hr">
-                <h3>Estilos <span><img src="../assets/ArrowDown.png"></span></h3>
-                <button class="funcs__bt"><img src="../assets/B.png" class="img__bar"></button>
-                <button class="funcs__bt"><img src="../assets/italic.png" class="img__bar"></button>
-                <button class="funcs__bt"><img src="../assets/underline.png" class="img__bar"></button>
-                <button class="funcs__bt"><img src="../assets/tachado.png" class="img__bar"></button>
+
+                <label for="fontStyle" class="font__custom funcs__bt">Fonte <img src="../assets/ArrowDown.png"></label>
+                <select name="Estilos" id="fontStyle" class="font__input"></select>
+
+                <button class="funcs__bt">
+                    <img src="../assets/B.png" class="img__bar">
+                </button>
+
+
+                <button class="funcs__bt">
+                    <img src="../assets/italic.png" class="img__bar">
+                </button>
+
+                <button class="funcs__bt">
+                    <img src="../assets/underline.png" class="img__bar">
+                </button>
+
+                <button class="funcs__bt">
+                    <img src="../assets/tachado.png" class="img__bar">
+                </button>
+
                 <hr class="inverted__hr">
-                <button class="funcs__bt"><img src="../assets/linkSymbol.png" class="img__bar"></button>
-                <button class="funcs__bt"><img src="../assets/imageSymbol.png" class="img__bar"></button>
-                <button class="funcs__bt"><img src="../assets/videoSymbol.png" class="img__bar"></button>
+
+                <button class="funcs__bt">
+                    <img src="../assets/linkSymbol.png" class="img__bar">
+                </button>
+
+                <button class="funcs__bt">
+                    <img src="../assets/imageSymbol.png" class="img__bar">
+                </button>
+
+                <button class="funcs__bt">
+                    <img src="../assets/videoSymbol.png" class="img__bar">
+                </button>
+
                 <hr class="inverted__hr">
-                <button class="funcs__bt"><img src="../assets/paragraph.png" class="img__bar"></button>
-                <button class="funcs__bt"><img src="../assets/formatation.png" class="img__bar"></button>
-                <button class="funcs__bt"><img src="../assets/diminuirRecuo.png" class="img__bar"></button>
-                <button class="funcs__bt"><img src="../assets/aumentarRecuo.png" class="img__bar"></button>
+
+                <button class="funcs__bt">
+                    <img src="../assets/paragraph.png" class="img__bar">
+                </button>
+
+                <button class="funcs__bt">
+                    <img src="../assets/formatation.png" class="img__bar">
+                </button>
+
+                <button class="funcs__bt">
+                    <img src="../assets/diminuirRecuo.png" class="img__bar">
+                </button>
+
+                <button class="funcs__bt">
+                    <img src="../assets/aumentarRecuo.png" class="img__bar">
+                </button>
             </div>
+
             <hr>
+
             <div class="container__below">
                 <div class="container__text">
                     <div class="other__box" id="titleBox" contenteditable="true" data-placeholder="Título:"></div>
