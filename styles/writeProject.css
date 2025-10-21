@@ -43,7 +43,7 @@ hr {
 }
 
 .font__input{
-    display: none;
+    display: block;
 }
 
 .font__custom{
@@ -63,6 +63,7 @@ hr {
 .container__below {
     display: flex;
     justify-content: space-between;
+    gap: 3rem;
     padding: 3rem;
 }
 
@@ -114,7 +115,7 @@ hr {
     width: 95%;
 }
 
-.options {
+.options__all {
     background-color: var(--sixth-color);
     display: flex;
     flex-direction: column;
@@ -148,12 +149,17 @@ hr {
     cursor: pointer;
 }
 
+.ra{
+    transform: rotateY(180deg);
+}
+
 .change{
     display: none;
 }
 
 .custom__change{
     display: inline-block;
+    margin: 0 0.5rem;
     transition: 0.3s ease-in-out;
 }
 
@@ -162,4 +168,40 @@ hr {
     cursor: pointer;
     transform: scale(1.1);
     transition: 0.3s ease-in-out;
+}
+
+.font__size{
+    background-color: transparent;
+    color: var(--third-color);
+    font-size: 1.5rem;
+    font-family: var(--main-font);
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.font__size:focus{
+    background-color: var(--second-color);
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.3s ease-in-out;
+    outline: none;
+}
+
+option{
+    background-color: var(--second-color);
+    color: var(--third-color);
+    font-size: 1.5rem;
+    font-family: var(--main-font);
+    font-weight: 600;
+}
+
+.active{
+    background-color: var(--second-color);
+    padding: 0.5rem;
+    box-shadow: var(--shadow);
+    transform: scale(1.1);
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
 }
