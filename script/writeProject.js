@@ -17,10 +17,12 @@ let formatButtons = document.querySelectorAll(".format");
 const viewProjectButton = document.getElementById("viewProject");
 const updateProjectButton = document.getElementById("updateProject");
 const publishProjectButton = document.getElementById("publishProject");
+const deleteProject = document.getElementById("deleteProject");
 
-//Will find the project by another function comming from draftProjects
+//Will find the project by another function comming from draftProjects by localStorage
 let userProjects = JSON.parse(localStorage.getItem("userProjects")) || [];
-let projectObj = userProjects[0];
+let projectObj = JSON.parse(localStorage.getItem("editingProject"));
+const userObj = JSON.parse(localStorage.getItem("loggedUser"));
 
 let fontList = ["Arial", "Verdana", "Garamond", "Georgia", "Courier New", "Cursive"];
 
@@ -151,12 +153,82 @@ updateProjectButton.addEventListener("click", (e) => {
         .then(async res => {
             const data = await res.json().catch(() => null);
             if (!res.ok) {
-                const msg = data?.message || 'Erro desconhecido no login';
+                const msg = data?.message || 'Erro desconhecido na edição';
                 throw new Error(msg);
             }
             return data;
         })
         .catch(err => console.log(err.message));
+});
+
+//PUBLISH PROJECT
+publishProjectButton.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    projectObj = {
+        ...projectObj,
+        hasPost: true
+    }
+
+    fetch("http://localhost:8080/project/" + projectObj.idProject, {
+        method: "PATCH",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(projectObj)
+    })
+        .then(async res => {
+            const data = await res.json().catch(() => null);
+            if (!res.ok) {
+                const msg = data?.message || 'Erro desconhecido na edição';
+                throw new Error(msg);
+            }
+            return data;
+        })
+        .catch(err => console.log(err.message));
+
+    const postObj = {
+        likes: 0,
+        project: projectObj,
+        user: userObj
+    }
+
+    fetch("http://localhost:8080/posts", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(postObj)
+    })
+    .then(async res => {
+        const data = await res.json().catch(() => null);
+            if (!res.ok) {
+                const msg = data?.message || 'Erro desconhecido na edição';
+                throw new Error(msg);
+            }
+            return data;
+    })
+    .catch(err => console.log(err.message));
+});
+
+//DELETE PROJECT BUTTON
+deleteProject.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    fetch("http://localhost:8080/project/" + projectObj.idProject, {
+        method: "DELETE",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(projectObj)
+    })
+    .then(async res => {
+        const data = await res.json().catch(() => null);
+        if(!res.ok){
+            const msg = data?.message || 'Erro desconhecido na exclusão'; 
+            throw new Error(msg);
+        }
+
+        return data;
+    })
+    .catch(err => console.log(err.message));
+
+    alert("Projeto deletado com sucesso!");
+    window.location.href = "../pages/projectDrafts.html"
 });
 
 window.onload = initializer();

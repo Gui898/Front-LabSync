@@ -35,8 +35,20 @@ function renderProjects() {
     const card = document.createElement("div");
     card.classList.add("project__card");
     card.id = "projectCard";
-    card.innerHTML = p.title;
+    if(p.title == null){
+      card.innerHTML = "Sem título"
+    }else{
+      card.innerHTML = p.title;
+    }
+    
     card.innerHTML = card.textContent.trim();
+
+    //ADD THE EVENT TO THE CARDS AND REDIRECT TO THE EDITOR PAGE
+    card.addEventListener("click", () => {
+      localStorage.setItem("editingProject", JSON.stringify(p));
+      window.location.href = "../pages/writeProject.html";
+    });
+
     projectsGrid.appendChild(card);
   });
 
@@ -51,6 +63,32 @@ function renderProjects() {
 
 //ADD A NEW PROJECT
 newProjectButton.addEventListener("click", () => {
+
+  const emptyProject = {
+    title: null,
+    category: "",
+    textProjects: "",
+    usedInstruments: "",
+    usedTech: "",
+    hasPost: false,
+    user: userObj
+  }
+
+  fetch("http://localhost:8080/project", {
+    method: "POST",
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(emptyProject)
+  })
+  .then((response) => {
+      if (!response.ok) {
+        throw new Error("Erro ao enviar");
+      }
+      return response.json();
+    })
+    .catch((err) => {
+      console.error("Erro no fetch:", err);
+      alert("Erro na requisição");
+    });
 
   const existe = Array.from(document.querySelectorAll("div"))
     .some(div => div.textContent.trim() === "Sem título");
@@ -67,10 +105,8 @@ newProjectButton.addEventListener("click", () => {
     favoritesTotal.textContent = shownCount;
   }
 
+  renderProjects();
 });
-
-//REDIRECTING TO THE SELECTED PROJECT TO EDIT
-
 
 loadMoreBtn.addEventListener("click", renderProjects);
 

@@ -114,7 +114,7 @@ main{
     min-height: 300px;
     width: 60%;
     overflow-wrap: break-word;
-    user-select: text; /*can copy, but not edit*/
+    user-select: text; /*can copy, but not edit*/ /*Or use none, to don't copy*/
 }
 
 .post__details{
