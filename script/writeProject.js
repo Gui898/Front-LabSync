@@ -14,6 +14,14 @@ let alignButtons = document.querySelectorAll(".align");
 let spacingButtons = document.querySelectorAll(".spacing");
 let formatButtons = document.querySelectorAll(".format");
 
+const viewProjectButton = document.getElementById("viewProject");
+const updateProjectButton = document.getElementById("updateProject");
+const publishProjectButton = document.getElementById("publishProject");
+
+//Will find the project by another function comming from draftProjects
+let userProjects = JSON.parse(localStorage.getItem("userProjects")) || [];
+let projectObj = userProjects[0];
+
 let fontList = ["Arial", "Verdana", "Garamond", "Georgia", "Courier New", "Cursive"];
 
 //initial settings
@@ -43,6 +51,13 @@ const initializer = () => {
 
     //default size
     fontSize.value = 3;
+
+    //textInputs start
+    titleArea.innerHTML = projectObj.title;
+    categoryArea.innerHTML = projectObj.category;
+    textArea.innerHTML = projectObj.textProjects;
+    usedInstArea.innerHTML = projectObj.usedInstruments;
+    usedTechArea.innerHTML = projectObj.usedTech;
 };
 
 //main logic
@@ -99,10 +114,49 @@ const highlighter = (className, needsRemoval) => {
     });
 };
 
+//highlith to remove clicked button
 const highlighterRemover = (className) => {
     className.forEach((button) => {
         button.classList.remove("active");
     });
 };
+
+//UPDATE BUTTON
+updateProjectButton.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    //object with all update inputs
+    const localProjectObj = {
+        idProject: projectObj.idProject,
+        title: titleArea.innerHTML,
+        category: categoryArea.innerHTML,
+        textProjects: textArea.innerHTML,
+        usedInstruments: usedInstArea.innerHTML,
+        usedTech: usedTechArea.innerHTML,
+        hasPost: projectObj.hasPost
+    };
+
+    //Save on localStorage again, but only that project in the array of projects
+    const index = userProjects.findIndex(p => p.idProject === projectObj.idProject);
+    if (index !== -1) {
+        userProjects[index] = localProjectObj;
+    }
+    localStorage.setItem("userProjects", JSON.stringify(userProjects));
+
+    fetch("http://localhost:8080/project/" + projectObj.idProject, {
+        method: "PUT",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(localProjectObj)
+    })
+        .then(async res => {
+            const data = await res.json().catch(() => null);
+            if (!res.ok) {
+                const msg = data?.message || 'Erro desconhecido no login';
+                throw new Error(msg);
+            }
+            return data;
+        })
+        .catch(err => console.log(err.message));
+});
 
 window.onload = initializer();
