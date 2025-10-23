@@ -82,6 +82,7 @@ main{
     background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
+    max-width: 26rem;
     padding: 1.5rem 3rem;
     border-radius: 16px;
     box-shadow: var(--shadow);
@@ -111,10 +112,18 @@ main{
     border-radius: 4px;
     padding: 1rem;
     color: black;
+    font-size: 1.2rem !important;
     min-height: 300px;
+    max-height: 300px;
+    overflow: auto;
+    scrollbar-width: none;
     width: 60%;
     overflow-wrap: break-word;
-    user-select: text; /*can copy, but not edit*/ /*Or use none, to don't copy*/
+    user-select: none; /*can copy, but not edit*/ /*Or use none, to don't copy*/
+}
+
+.project__content *{
+    font-size: 1.5rem !important;
 }
 
 .post__details{
