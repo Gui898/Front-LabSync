@@ -1,3 +1,4 @@
+//SHOWING THE NAME
 const userKey = "loggedUser";
 const userNameHeader = document.getElementById("userName");
 

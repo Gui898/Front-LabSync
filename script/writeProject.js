@@ -127,7 +127,7 @@ const highlighterRemover = (className) => {
 updateProjectButton.addEventListener("click", (e) => {
     e.preventDefault();
 
-    //object with all update inputs
+    //Object with all update inputs
     const localProjectObj = {
         idProject: projectObj.idProject,
         title: titleArea.innerHTML,
@@ -158,77 +158,79 @@ updateProjectButton.addEventListener("click", (e) => {
             }
             return data;
         })
+        .then(() => {
+            document.getElementById("saving").style.display = "flex";
+            updateProjectButton.setAttribute("disabled", "true");
+
+            setTimeout(() => {
+                document.getElementById("saving").style.display = "none"
+                updateProjectButton.removeAttribute("disabled");
+            }, 2000);
+        })
         .catch(err => console.log(err.message));
 });
 
 //PUBLISH PROJECT
-publishProjectButton.addEventListener("click", (e) => {
+publishProjectButton.addEventListener("click", async (e) => {
     e.preventDefault();
 
-    projectObj = {
-        ...projectObj,
-        hasPost: true
+    projectObj.hasPost = true;
+
+    try {
+    const resProject = await fetch(`http://localhost:8080/project/${projectObj.idProject}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(projectObj),
+    });
+    if (!resProject.ok) {
+        throw new Error("Erro ao atualizar projeto antes de publicar");
     }
 
-    fetch("http://localhost:8080/project/" + projectObj.idProject, {
-        method: "PATCH",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(projectObj)
-    })
-        .then(async res => {
-            const data = await res.json().catch(() => null);
-            if (!res.ok) {
-                const msg = data?.message || 'Erro desconhecido na edição';
-                throw new Error(msg);
-            }
-            return data;
-        })
-        .catch(err => console.log(err.message));
-
-    const postObj = {
-        likes: 0,
-        project: projectObj,
-        user: userObj
+    const postObj = { likes: 0, project: projectObj, user: userObj };
+    const resPost = await fetch("http://localhost:8080/posts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(postObj),
+    });
+    if (!resPost.ok) {
+        throw new Error("Erro ao criar post");
     }
-
-    fetch("http://localhost:8080/posts", {
-        method: "POST",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(postObj)
-    })
-    .then(async res => {
-        const data = await res.json().catch(() => null);
-            if (!res.ok) {
-                const msg = data?.message || 'Erro desconhecido na edição';
-                throw new Error(msg);
-            }
-            return data;
-    })
-    .catch(err => console.log(err.message));
+    
+    alert("Projeto publicado com sucesso!");
+  } catch (err) {
+    console.error(err.message);
+  }
 });
 
 //DELETE PROJECT BUTTON
-deleteProject.addEventListener("click", (e) => {
-    e.preventDefault();
+deleteProject.addEventListener("click", async (e) => {
+      e.preventDefault();
 
-    fetch("http://localhost:8080/project/" + projectObj.idProject, {
+  try {
+    if (projectObj.hasPost) {
+      const resPost = await fetch(`http://localhost:8080/posts/project/${projectObj.idProject}`, {
         method: "DELETE",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(projectObj)
-    })
-    .then(async res => {
-        const data = await res.json().catch(() => null);
-        if(!res.ok){
-            const msg = data?.message || 'Erro desconhecido na exclusão'; 
-            throw new Error(msg);
+        headers: { "Content-Type": "application/json" },
+      });
+      if (!resPost.ok) {
+        throw new Error("Erro ao excluir post do projeto");
+      }
+    }
+
+    const resProject = await fetch(`http://localhost:8080/project/${projectObj.idProject}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+    if (!resProject.ok){
+         throw new Error("Erro ao excluir projeto");
         }
 
-        return data;
-    })
-    .catch(err => console.log(err.message));
-
     alert("Projeto deletado com sucesso!");
-    window.location.href = "../pages/projectDrafts.html"
+    window.location.href = "../pages/projectDrafts.html";
+  } catch (err) {
+    console.error(err.message);
+    alert("Erro ao excluir projeto!");
+  }
 });
 
 window.onload = initializer();

@@ -54,6 +54,7 @@ main{
 }
 
 .lateral__elements{
+    background-color: transparent;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -61,12 +62,18 @@ main{
     color: var(--fourth-color);
     font-weight: 600;
     text-decoration: none;
+    border: none;
     transition: .3s ease-in-out;
 }
 
 .lateral__elements:hover{
     transform: scale(1.1);
     transition: .3s ease-in-out;
+    cursor: pointer;
+}
+
+.popular{
+    font-size: 1.5rem;
 }
 
 .vertical__hr {
@@ -119,7 +126,7 @@ main{
     scrollbar-width: none;
     width: 60%;
     overflow-wrap: break-word;
-    user-select: none; /*can copy, but not edit*/ /*Or use none, to don't copy*/
+    user-select: none; /*Text can copy, but not edit*/ /*Or use none, to don't copy*/
 }
 
 .project__content *{
@@ -129,7 +136,23 @@ main{
 .post__details{
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 20px;
+}
+
+.more__details{
+    background-color: transparent;
+    font-size: 1rem;
+    text-decoration: none;
+    color: var(--color-accent);
+    border: none;
+    transition: 0.3s ease-in-out;
+}
+
+.more__details:hover{
+    transform: scale(1.1);
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .dislike{

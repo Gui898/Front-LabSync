@@ -8,8 +8,8 @@
     --fourth-color: #1A4247;
     --fifth-color: #53B6C9;
     --sixth-color: #458D96;
-    --sheet-back-color: #e0dfdf;
-    --shadow: 0 4px 15px rgba(0, 0, 0, 1.8);
+    --comment-background: #394C60;
+    --sheet-back-color: #ECECEC;
     --ok-color: green;
     --verify-color: rgb(230, 230, 74);
     --error-color: rgb(247, 60, 60);
@@ -19,6 +19,7 @@
     --second-font-color: #000;
     --main-font: "Montserrat", sans-serif;
     --second-font: "Inter", sans-serif;;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 1.8);
 }
 
 body{

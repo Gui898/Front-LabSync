@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/viewProject.css">
+    <script src="../script/commum.js" defer></script>
+    <script src="../script/viewProject.js" defer></script>
+    <title>LabSync</title>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="../index.html"><img class="logo" src="../assets/LogoLabSync.png" alt="Logo LabSync"></a>
+            <div class="profile__set">
+                <p class="userName" id="userName">Apelido</p>
+                <img class="profile__nav" src="../assets/perfilPhoto.png" alt="Foto de perfil">
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="container">
+            <div class="container__below">
+                <div class="container__text">
+                    <div class="other__box" id="titleBox" data-placeholder="Título:"></div>
+
+                    <hr class="text__hr">
+                    <div class="other__box" id="categoryBox" data-placeholder="Categoria:"></div>
+
+                    <hr class="text__hr">
+                    <div class="text__box" id="textBox"></div>
+
+                    <hr class="text__hr">
+                    <div class="other__box" id="usedInst" data-placeholder="Instrumentos usados:"></div>
+
+                    <hr class="text__hr">
+                    <div class="other__box" id="usedTech" data-placeholder="Tecnologias usadas:"></div>
+                </div>
+
+                <aside class="options__all">
+                    <div class="post__details">
+                        <div class="actions">
+                            <button class="content__bt" id="likeButton"><img src="../assets/likeSymbol.png">
+                                <span id="likeCount">0</span>
+                            </button>
+                            <button class="content__bt"><img src="../assets/likeSymbol.png" class="dislike">
+                                <span>0</span>
+                            </button>
+                        </div>
+
+                        <div class="actions">
+                            <button class="content__bt"><img src="../assets/postFavoriteHeart.png">
+                                <span>0</span>
+                            </button>
+                            <button class="content__bt"><img src="../assets/commentSymbol.png">
+                                <span>0</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="comments__container">
+                        <div class="comment">
+                            <div class="comment__profile">
+                                <img src="../assets/perfilPhoto.png" class="comment__profil__img">
+                                <h3 class="comment__name">Apelido</h3>
+                            </div>
+                            <p class="comment__text">Comentário da pessoa...</p>
+                        </div>
+
+                        <div class="comment">
+                            <div class="comment__profile">
+                                <img src="../assets/perfilPhoto.png" class="comment__profil__img">
+                                <h3 class="comment__name">Apelido</h3>
+                            </div>
+                            <p class="comment__text">Comentário da pessoa...</p>
+                        </div>
+
+                        <div class="comment">
+                            <div class="comment__profile">
+                                <img src="../assets/perfilPhoto.png" class="comment__profil__img">
+                                <h3 class="comment__name">Apelido</h3>
+                            </div>
+                            <p class="comment__text">Comentário da pessoa...</p>
+                        </div>
+                    </div>
+
+                    <form class="send__comment">
+                        <textarea class="comment__input" id="commentInput"
+                            placeholder="Comentar..."></textarea>
+                        <button type="submit" class="send__button">Enviar</button>
+                    </form>
+
+                </aside>
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>
