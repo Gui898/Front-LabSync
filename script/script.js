@@ -14,9 +14,22 @@ fetch("http://localhost:8080/posts")
     })
     .then(data => {
         allPosts = data;
+        reverse(allPosts);
         loadMorePosts();
     })
     .catch(err => console.log(err.message));
+
+function reverse(array){
+    let i = 0;
+    let j = array.length-1;
+    while(i <= j){
+        const arrayFixPos = array[i];
+        array[i] = array[j];
+        array[j] = arrayFixPos;
+        i++;
+        j--;
+    }
+}
 
 function loadMorePosts() {
 
