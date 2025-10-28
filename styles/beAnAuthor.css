@@ -63,7 +63,7 @@ hr{
 }
 
 .valid__inputs{
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;

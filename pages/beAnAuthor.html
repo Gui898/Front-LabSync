@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/beAnAuthor.css">
     <link rel="icon" href="../assets/icon.png">
+    <script src="../script/beAnAuthor.js" defer></script>
     <title>LabSync</title>
 </head>
 <body>
@@ -12,11 +13,11 @@
         <h2>Torne-se um autor</h2>
         <hr>
         <form id="registerForm" class="register__form">
-            <input type="email" class="input__reg academic" id="email_academico" name="academicEmail" placeholder="Email acadêmico">
+            <input type="email" class="input__reg academic" id="emailAcademico" name="academicEmail" placeholder="Email acadêmico" required>
             <div class="valid__inputs" id ="validInputs">
                 <p class="valid__inputs__text">Verificando<span class="dots"></span></p>
             </div>
-            <button type="submit" class="register__bt">Salvar</button>
+            <button type="submit" class="register__bt" id="saveButton">Salvar</button>
         </form>
     </div>
 

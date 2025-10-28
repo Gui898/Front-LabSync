@@ -6,7 +6,7 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 const aboutMe = document.getElementById("aboutMe");
 
-//INITIAIZE USER IN THE INPUTS
+//INITIALIZE USER IN THE INPUTS
 userName.value = loggedUser.name;
 surname.value = loggedUser.surname;
 email.value = loggedUser.email;
@@ -56,6 +56,14 @@ document.getElementById("editForm").addEventListener("submit", (e) => {
         })
         .catch(err => console.log(err));
 });
+
+if(loggedUser.readerOrAuthor){
+    document.getElementById("projectDrafts").style.display = "flex";
+    document.getElementById("beAnAuthor").style.display = "none";
+}else{
+    document.getElementById("beAnAuthor").style.display = "flex";
+    document.getElementById("projectDrafts").style.display = "none";
+}
 
 //DELETE USER
 document.getElementById("deleteUser").addEventListener("click", (e) => {
