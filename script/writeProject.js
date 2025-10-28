@@ -138,6 +138,8 @@ updateProjectButton.addEventListener("click", (e) => {
         hasPost: projectObj.hasPost
     };
 
+    localStorage.setItem("editingProject", JSON.stringify(localProjectObj));
+
     //Save on localStorage again, but only that project in the array of projects
     const index = userProjects.findIndex(p => p.idProject === projectObj.idProject);
     if (index !== -1) {
@@ -174,19 +176,21 @@ updateProjectButton.addEventListener("click", (e) => {
 publishProjectButton.addEventListener("click", async (e) => {
     e.preventDefault();
 
-    projectObj.hasPost = true;
+    const projectObjUpdated = JSON.parse(localStorage.getItem("editingProject"));
+
+    projectObjUpdated.hasPost = true;
 
     try {
-    const resProject = await fetch(`http://localhost:8080/project/${projectObj.idProject}`, {
+    const resProject = await fetch(`http://localhost:8080/project/${projectObjUpdated.idProject}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(projectObj),
+      body: JSON.stringify(projectObjUpdated),
     });
     if (!resProject.ok) {
         throw new Error("Erro ao atualizar projeto antes de publicar");
     }
 
-    const postObj = { likes: 0, project: projectObj, user: userObj };
+    const postObj = { likes: 0, project: projectObjUpdated, user: userObj };
     const resPost = await fetch("http://localhost:8080/posts", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

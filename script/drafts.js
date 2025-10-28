@@ -87,13 +87,12 @@ newProjectButton.addEventListener("click", () => {
     })
     .catch((err) => {
       console.error("Erro no fetch:", err);
-      alert("Erro na requisição");
     });
 
-  const existe = Array.from(document.querySelectorAll("div"))
+  const exist = Array.from(document.querySelectorAll("div"))
     .some(div => div.textContent.trim() === "Sem título");
 
-  if (existe) {
+  if (exist) {
     console.log("Tem que alterar o arquivo em branco já existente!");
   } else {
     const card = document.createElement("div");
@@ -106,6 +105,7 @@ newProjectButton.addEventListener("click", () => {
   }
 
   renderProjects();
+  window.location.reload();
 });
 
 loadMoreBtn.addEventListener("click", renderProjects);
