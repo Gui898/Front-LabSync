@@ -1,3 +1,5 @@
+const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+
 let allPosts = [];
 let currentIndex = 0;
 const postsPerPage = 5;
@@ -19,10 +21,10 @@ fetch("http://localhost:8080/posts")
     })
     .catch(err => console.log(err.message));
 
-function reverse(array){
+function reverse(array) {
     let i = 0;
-    let j = array.length-1;
-    while(i <= j){
+    let j = array.length - 1;
+    while (i <= j) {
         const arrayFixPos = array[i];
         array[i] = array[j];
         array[j] = arrayFixPos;
@@ -89,6 +91,8 @@ function renderPost(post) {
     likeButton.addEventListener("click", (e) => {
         e.preventDefault();
 
+        const pop = new Audio("../assets/audio/pop.mp3");
+        pop.play();
         post.likes = post.likes + 1;
         likeCount.textContent = post.likes;
 
@@ -121,7 +125,63 @@ function renderPost(post) {
     const favoriteImg = document.createElement("img");
     favoriteImg.src = "../assets/postFavoriteHeart.png";
     favoriteButton.appendChild(favoriteImg);
-    favoriteButton.append(0);
+
+    let isFavorited = false;
+    let favId;
+    favoriteButton.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const audio = new Audio("../assets/audio/favoriting.mp3");
+
+        if (!isFavorited) {
+            isFavorited = true;
+            favoriteImg.src = "../assets/alreadyFavoritedHeart.png";
+            favoriteButton.classList.add("favorited__button");
+            audio.play();
+
+            const favoriteObj = {
+                user: loggedUser,
+                posts: post,
+            }
+
+            fetch("http://localhost:8080/favorite", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(favoriteObj),
+            })
+            .then(async res => {
+                const data = await res.json().catch(() => null);
+                if (!res.ok) {
+                    const msg = data?.message || "Erro desconhecido ao atualizar posts";
+                    throw new Error(msg);
+                }
+                return data;
+            })
+            .then(data => {
+                favId = data.idFavorite;
+            })
+            .catch(err => console.log(err.message));
+
+        } else {
+            isFavorited = false;
+            favoriteImg.src = "../assets/postFavoriteHeart.png";
+            favoriteButton.classList.remove("favorited__button"); 
+            
+            fetch("http://localhost:8080/favorite" + favId, {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+            })
+            .then(async res => {
+                const data = await res.json().catch(() => null);
+                if (!res.ok) {
+                    const msg = data?.message || "Erro desconhecido ao atualizar posts";
+                    throw new Error(msg);
+                }
+                return data;
+            })
+            .catch(err => console.log(err.message));
+        }
+    });
 
     const commentButton = document.createElement("button");
     commentButton.classList.add("content__bt");

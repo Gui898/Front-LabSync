@@ -1,45 +1,50 @@
 @import url("styles.css");
 
 body {
-  background-color: var(--second-color);
+    background-color: var(--second-color);
 }
 
 .container {
-  background-color: var(--primary-color);
-  display: flex;
-  flex-direction: column;
-  margin: 3rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    margin: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+    padding: 0.5rem;
 }
 
 .favorites__title {
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-size: 2rem;
 }
 
 .favorites__count {
-  margin-left: 6.5rem;
+    margin-left: 3em;
 }
 
 .projects__grid {
-  margin: 2rem 4rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 20px;
+    margin: 2rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
 }
 
 .project__card {
-    background-color: white;
+    background-color: var(--sheet-back-color);
     color: #111;
     border-radius: 8px;
-    height: 200px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    font-size: 0.9rem;
+    height: 185px;
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    padding: 1rem 1rem 0 1rem;
+    white-space: normal;
+    word-wrap: break-word; 
+    overflow-wrap: break-word;
+    overflow: hidden;
     font-weight: 500;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s;
@@ -49,19 +54,18 @@ body {
     transform: translateY(-5px);
     cursor: pointer;
 }
-
 .load__more {
-  display: block;
-  margin: 25px auto 0;
-  padding: 8px 20px;
-  border: none;
-  background: none;
-  color: var(--color-accent);
-  font-size: 1rem;
-  cursor: pointer;
-  transition: opacity 0.2s;
+    display: block;
+    margin: 25px auto 0;
+    padding: 8px 20px;
+    border: none;
+    background: none;
+    color: var(--color-accent);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
 }
 
 .load__more:hover {
-  opacity: 0.8;
+    opacity: 0.8;
 }

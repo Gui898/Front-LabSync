@@ -4,6 +4,8 @@ const loadMoreBtn = document.getElementById("loadMoreBtn");
 const newProjectButton = document.getElementById("newProjecrButton");
 
 let cards = document.querySelectorAll("#projectCard");
+let shownCount = 0;
+const PAGE_SIZE = 100;
 
 const userObj = JSON.parse(localStorage.getItem("loggedUser"));
 let allProjects = []; //comming from backend
@@ -12,7 +14,7 @@ fetch("http://localhost:8080/project/user/" + userObj.idUser)
   .then(async res => {
     const data = await res.json().catch(() => null);
     if (!res.ok) {
-      const msg = data?.message || 'Erro desconhecido no login';
+      const msg = data?.message || 'Erro desconhecido ao encontrar projetos';
       throw new Error(msg);
     }
     return data;
@@ -24,8 +26,6 @@ fetch("http://localhost:8080/project/user/" + userObj.idUser)
   })
   .catch(err => console.log(err.message));
 
-let shownCount = 0;
-const PAGE_SIZE = 10;
 
 //RENDER ALL USER'S PROJECTS
 function renderProjects() {

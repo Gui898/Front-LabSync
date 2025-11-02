@@ -2,32 +2,53 @@ const projectsGrid = document.getElementById("projectsGrid");
 const favoritesTotal = document.getElementById("favoritesTotal");
 const loadMoreBtn = document.getElementById("loadMoreBtn");
 
-let allProjects = []; // viria do backend
-
-
-
 let shownCount = 0;
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 5;
 
-// Simulação inicial
-allProjects = Array.from({ length: 30 }, (_, i) => ({
-  name: `Projeto ${i + 1}`
-}));
+const userObj = JSON.parse(localStorage.getItem("loggedUser"));
+let allFavorites = []; //comming from backend
+
+fetch("http://localhost:8080/favorite/user/" + userObj.idUser)
+.then(async res => {
+    const data = await res.json().catch(() => null);
+    if (!res.ok) {
+      const msg = data?.message || 'Erro desconhecido ao encontrar favoritos';
+      throw new Error(msg);
+    }
+    return data;
+  })
+  .then(favorite => {
+    allFavorites = favorite;
+    localStorage.setItem("userFavorites", JSON.stringify(favorite));
+    renderProjects();
+  })
+  .catch(err => console.log(err.message));
+
 
 function renderProjects() {
-  const nextProjects = allProjects.slice(shownCount, shownCount + PAGE_SIZE);
+  const nextProjects = allFavorites.slice(shownCount, shownCount + PAGE_SIZE);
 
-  nextProjects.forEach(p => {
+  nextProjects.forEach(f => {
     const card = document.createElement("div");
     card.classList.add("project__card");
-    card.textContent = p.name;
+    card.id = "projectCard";
+    card.innerHTML = f.posts.project.title;
+    
+    card.innerHTML = card.textContent.trim();
+
+    //]EDITA AQUI AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    card.addEventListener("click", () => {
+      localStorage.setItem("showingFavorite", JSON.stringify(f));
+      window.location.href = "../pages/viewProject.html";
+    });
+
     projectsGrid.appendChild(card);
   });
 
   shownCount += nextProjects.length;
-  favoritesTotal.textContent = allProjects.length;
+  favoritesTotal.textContent = allFavorites.length;
 
-  if (shownCount >= allProjects.length) {
+  if (shownCount >= allFavorites.length) {
     loadMoreBtn.style.display = "none";
   }
 }
