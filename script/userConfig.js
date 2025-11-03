@@ -16,9 +16,10 @@ aboutMe.value = loggedUser.aboutMe;
 //EXIT USER
 document.getElementById("exitBt").addEventListener("click", (e) => {
     e.preventDefault();
-
+    const exitAudio = new Audio("../assets/audio/exit.mp3");
+    exitAudio.play();
     localStorage.clear();
-    window.location.href = "../pages/login.html";
+    setTimeout(() => {window.location.href = "../pages/login.html";}, 1300)
 });
 
 //SAVE USER ALTERATIONS

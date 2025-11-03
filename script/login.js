@@ -18,9 +18,14 @@ document.getElementById("runLogin").addEventListener('submit', async (e) => {
         const data = await res.json().catch(() => null);
         if (!res.ok) {
             const msg = data?.message || 'Erro desconhecido no login';
+            const deniedAudio = new Audio("../assets/audio/denied.mp3");
+            deniedAudio.play();
             document.getElementById("invalidInputs").style.display = "block";
+
             throw new Error(msg);
         }else{
+            const correctAudio = new Audio("../assets/audio/correct.mp3");
+            correctAudio.play();
             document.getElementById("invalidInputs").style.display = "none";
             document.getElementById("validInputs").style.display = "flex"
         }
