@@ -12,6 +12,26 @@ header{
     z-index: 100;
 }
 
+.search__bar{
+    transition: .3s ease-in-out;
+}
+
+.search__bar:hover{
+    transform: scale(1.02);
+    transition: .3s ease-in-out;
+}
+
+.search__input{
+    outline: none;
+}
+
+.search__bt{
+    cursor: pointer;
+    outline: none;
+    transition: .3s ease-in-out;
+}
+
+
 main{
     display: flex;
     justify-content: space-between;

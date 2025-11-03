@@ -80,6 +80,11 @@ nav{
     width: 100%;
 }
 
+.userName{
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
 .profile__set{
     display: flex;
     justify-content: space-between;

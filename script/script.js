@@ -275,6 +275,8 @@ document.getElementById("searchButton").addEventListener("click", (e) => {
     e.preventDefault();
 
     const input = document.getElementById("searchInput");
+    allPosts = [];
+    
 
     if (input) {
         fetch("http://localhost:8080/project/search/" + input.value)
@@ -287,14 +289,18 @@ document.getElementById("searchButton").addEventListener("click", (e) => {
                 return data;
             })
             .then(data => {
-                const postLikeStructure = {
-                    idPost: data.id || 0,
-                    user: { name: data.userName || "Desconhecido" },
-                    project: data,
-                    likes: data.likes || 0
-                };
-                localStorage.setItem("searchResult", JSON.stringify(postLikeStructure));
-                allPosts = [postLikeStructure];
+                data.forEach(proj => {
+                    const post = {
+                        idPost: proj.id || 0,
+                        user: { name: proj.user.name || "Desconhecido" },
+                        project: proj,
+                        likes: proj.likes || 0
+                    }
+
+                    allPosts.push(post);
+                });
+
+                localStorage.setItem("searchResult", JSON.stringify(allPosts));
                 currentIndex = 0;
                 document.getElementById("middleContainer").innerHTML = "";
                 loadMorePosts();
