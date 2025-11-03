@@ -21,10 +21,23 @@ fetch("http://localhost:8080/project/user/" + userObj.idUser)
   })
   .then(projects => {
     allProjects = projects;
+    reverse(allProjects);
     localStorage.setItem("userProjects", JSON.stringify(projects));
     renderProjects();
   })
   .catch(err => console.log(err.message));
+
+function reverse(array) {
+    let i = 0;
+    let j = array.length - 1;
+    while (i <= j) {
+        const arrayFixPos = array[i];
+        array[i] = array[j];
+        array[j] = arrayFixPos;
+        i++;
+        j--;
+    }
+}
 
 
 //RENDER ALL USER'S PROJECTS

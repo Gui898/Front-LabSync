@@ -1,6 +1,7 @@
 const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
 
 let allPosts = [];
+let allFavorites = [];
 let currentIndex = 0;
 const postsPerPage = 5;
 
@@ -17,9 +18,25 @@ fetch("http://localhost:8080/posts")
     .then(data => {
         allPosts = data;
         reverse(allPosts);
-        loadMorePosts();
+        fetch("http://localhost:8080/favorite/user/" + loggedUser.idUser)
+            .then(async res => {
+                const data = await res.json().catch(() => null);
+                if (!res.ok) {
+                    const msg = data?.message || 'Erro desconhecido ao encontrar favoritos';
+                    throw new Error(msg);
+                }
+                return data;
+            })
+            .then(favorite => {
+                favorite.forEach(fav => {
+                    allFavorites.push(fav.posts.idPost);
+                });
+                loadMorePosts();
+            })
+            .catch(err => console.log(err.message));
     })
     .catch(err => console.log(err.message));
+
 
 function reverse(array) {
     let i = 0;
@@ -126,8 +143,15 @@ function renderPost(post) {
     favoriteImg.src = "../assets/postFavoriteHeart.png";
     favoriteButton.appendChild(favoriteImg);
 
-    let isFavorited = false;
-    let favId;
+    let isFavorited = allFavorites.includes(post.idPost);
+
+    if (isFavorited) {
+        favoriteImg.src = "../assets/alreadyFavoritedHeart.png";
+        favoriteButton.classList.add("favorited__button");
+    } else {
+        favoriteImg.src = "../assets/postFavoriteHeart.png";
+    }
+
     favoriteButton.addEventListener("click", (e) => {
         e.preventDefault();
 
@@ -149,37 +173,34 @@ function renderPost(post) {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(favoriteObj),
             })
-            .then(async res => {
-                const data = await res.json().catch(() => null);
-                if (!res.ok) {
-                    const msg = data?.message || "Erro desconhecido ao atualizar posts";
-                    throw new Error(msg);
-                }
-                return data;
-            })
-            .then(data => {
-                favId = data.idFavorite;
-            })
-            .catch(err => console.log(err.message));
+                .then(async res => {
+                    const data = await res.json().catch(() => null);
+                    if (!res.ok) {
+                        const msg = data?.message || "Erro desconhecido ao atualizar posts";
+                        throw new Error(msg);
+                    }
+                    return data;
+                })
+                .catch(err => console.log(err.message));
 
         } else {
             isFavorited = false;
             favoriteImg.src = "../assets/postFavoriteHeart.png";
-            favoriteButton.classList.remove("favorited__button"); 
-            
-            fetch("http://localhost:8080/favorite" + favId, {
+            favoriteButton.classList.remove("favorited__button");
+
+            fetch(`http://localhost:8080/favorite/${post.idPost}/${loggedUser.idUser}`, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
             })
-            .then(async res => {
-                const data = await res.json().catch(() => null);
-                if (!res.ok) {
-                    const msg = data?.message || "Erro desconhecido ao atualizar posts";
-                    throw new Error(msg);
-                }
-                return data;
-            })
-            .catch(err => console.log(err.message));
+                .then(async res => {
+                    const data = await res.json().catch(() => null);
+                    if (!res.ok) {
+                        const msg = data?.message || "Erro desconhecido ao atualizar posts";
+                        throw new Error(msg);
+                    }
+                    return data;
+                })
+                .catch(err => console.log(err.message));
         }
     });
 

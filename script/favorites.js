@@ -3,12 +3,12 @@ const favoritesTotal = document.getElementById("favoritesTotal");
 const loadMoreBtn = document.getElementById("loadMoreBtn");
 
 let shownCount = 0;
-const PAGE_SIZE = 5;
+const PAGE_SIZE = 100;
 
-const userObj = JSON.parse(localStorage.getItem("loggedUser"));
-let allFavorites = []; //comming from backend
+const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+let allFavorites = [];
 
-fetch("http://localhost:8080/favorite/user/" + userObj.idUser)
+fetch("http://localhost:8080/favorite/user/" + loggedUser.idUser)
 .then(async res => {
     const data = await res.json().catch(() => null);
     if (!res.ok) {
@@ -19,11 +19,23 @@ fetch("http://localhost:8080/favorite/user/" + userObj.idUser)
   })
   .then(favorite => {
     allFavorites = favorite;
+    reverse(allFavorites);
     localStorage.setItem("userFavorites", JSON.stringify(favorite));
     renderProjects();
   })
   .catch(err => console.log(err.message));
 
+function reverse(array) {
+    let i = 0;
+    let j = array.length - 1;
+    while (i <= j) {
+        const arrayFixPos = array[i];
+        array[i] = array[j];
+        array[j] = arrayFixPos;
+        i++;
+        j--;
+    }
+}
 
 function renderProjects() {
   const nextProjects = allFavorites.slice(shownCount, shownCount + PAGE_SIZE);
