@@ -11,34 +11,64 @@ function initializer() {
     const usedInstArea = document.getElementById("usedInst");
     const usedTechArea = document.getElementById("usedTech");
 
-    titleArea.innerHTML = postDetailed.project.title;
-    categoryArea.innerHTML = postDetailed.project.category;
-    textArea.innerHTML = postDetailed.project.textProjects;
-    usedInstArea.innerHTML = postDetailed.project.usedInstruments;
-    usedTechArea.innerHTML = postDetailed.project.usedTech;
+    if (postDetailed.idFavorite != null) {
+        titleArea.innerHTML = postDetailed.posts.project.title;
+        categoryArea.innerHTML = postDetailed.posts.project.category;
+        textArea.innerHTML = postDetailed.posts.project.textProjects;
+        usedInstArea.innerHTML = postDetailed.posts.project.usedInstruments;
+        usedTechArea.innerHTML = postDetailed.posts.project.usedTech;
 
-    likeCount.textContent = postDetailed.likes
+        likeCount.textContent = postDetailed.posts.likes;
+    } else {
+        titleArea.innerHTML = postDetailed.project.title;
+        categoryArea.innerHTML = postDetailed.project.category;
+        textArea.innerHTML = postDetailed.project.textProjects;
+        usedInstArea.innerHTML = postDetailed.project.usedInstruments;
+        usedTechArea.innerHTML = postDetailed.project.usedTech;
+
+        likeCount.textContent = postDetailed.likes;
+    }
 
 }
 
 document.getElementById("likeButton").addEventListener("click", (e) => {
     e.preventDefault();
 
-    postDetailed.likes = postDetailed.likes + 1;
-    likeCount.textContent = postDetailed.likes;
+    if (postDetailed.idFavorite != null) {
+        postDetailed.posts.likes = postDetailed.posts.likes + 1;
+        likeCount.textContent = postDetailed.posts.likes;
 
-    fetch("http://localhost:8080/posts/" + postDetailed.idPost, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ likes: postDetailed.likes }),
-    })
-        .then(async res => {
-            const data = await res.json().catch(() => null);
-            if (!res.ok) {
-                const msg = data?.message || "Erro desconhecido ao atualizar posts";
-                throw new Error(msg);
-            }
-            return data;
+        fetch("http://localhost:8080/posts/" + postDetailed.posts.idPost, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ likes: postDetailed.posts.likes }),
         })
-        .catch(err => console.log(err.message));
+            .then(async res => {
+                const data = await res.json().catch(() => null);
+                if (!res.ok) {
+                    const msg = data?.message || "Erro desconhecido ao atualizar posts";
+                    throw new Error(msg);
+                }
+                return data;
+            })
+            .catch(err => console.log(err.message));
+    } else {
+        postDetailed.likes = postDetailed.likes + 1;
+        likeCount.textContent = postDetailed.likes;
+
+        fetch("http://localhost:8080/posts/" + postDetailed.idPost, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ likes: postDetailed.likes }),
+        })
+            .then(async res => {
+                const data = await res.json().catch(() => null);
+                if (!res.ok) {
+                    const msg = data?.message || "Erro desconhecido ao atualizar posts";
+                    throw new Error(msg);
+                }
+                return data;
+            })
+            .catch(err => console.log(err.message));
+    }
 });

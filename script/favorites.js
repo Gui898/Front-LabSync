@@ -50,7 +50,7 @@ function renderProjects() {
 
     //]EDITA AQUI AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     card.addEventListener("click", () => {
-      localStorage.setItem("showingFavorite", JSON.stringify(f));
+      localStorage.setItem("currentPostView", JSON.stringify(f));
       window.location.href = "../pages/viewProject.html";
     });
 
