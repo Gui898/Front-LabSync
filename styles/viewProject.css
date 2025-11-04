@@ -24,6 +24,10 @@
     gap: 50px;
 }
 
+.favComment{
+    gap: 6rem;
+}
+
 .content__bt{
     background-color: transparent;
     color: var(--third-color);
