@@ -1,5 +1,22 @@
 let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
 
+let userPosts;
+
+fetch("http://localhost:8080/posts/user/" + loggedUser.idUser)
+    .then(async res => {
+        if (!res.ok) {  
+            const data = await res.json().catch(() => ({}));
+            const msg = data.message || 'Erro desconhecido ao buscar posts do usuário';
+            throw new Error(msg);
+        }
+        return res.json();
+    })
+    .then(data => {
+        userPosts = data;
+        localStorage.setItem("userPosts", JSON.stringify(userPosts));
+    })
+    .catch(err => console.log(err));
+
 const userName = document.getElementById("username");
 const surname = document.getElementById("surname");
 const email = document.getElementById("email");
@@ -83,6 +100,19 @@ document.getElementById("deleteUser").addEventListener("click", (e) => {
         })
         .catch(err => console.log(err));
 
+    userPosts.forEach(post => {  
+        fetch("http://localhost:8080/favorite/post/" + post.idPost, {
+            method: "DELETE",
+        })
+            .then(async res => {    
+                if (!res.ok) {
+                    const data = await res.json().catch(() => ({}));
+                    const msg = data.message || 'Erro desconhecido na configuração de usuário';
+                    throw new Error(msg);
+                }
+            })
+            .catch(err => console.log(err));
+    });  
 
     //Deleting user's posts
     fetch("http://localhost:8080/posts/user/" + loggedUser.idUser, {
