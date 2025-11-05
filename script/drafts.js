@@ -8,7 +8,7 @@ let shownCount = 0;
 const PAGE_SIZE = 100;
 
 const userObj = JSON.parse(localStorage.getItem("loggedUser"));
-let allProjects = []; //comming from backend
+let allProjects = []; 
 
 fetch("http://localhost:8080/project/user/" + userObj.idUser)
   .then(async res => {
@@ -40,7 +40,6 @@ function reverse(array) {
 }
 
 
-//RENDER ALL USER'S PROJECTS
 function renderProjects() {
   const nextProjects = allProjects.slice(shownCount, shownCount + PAGE_SIZE);
 
@@ -56,7 +55,6 @@ function renderProjects() {
     
     card.innerHTML = card.textContent.trim();
 
-    //ADD THE EVENT TO THE CARDS AND REDIRECT TO THE EDITOR PAGE
     card.addEventListener("click", () => {
       localStorage.setItem("editingProject", JSON.stringify(p));
       window.location.href = "../pages/writeProject.html";
@@ -74,7 +72,6 @@ function renderProjects() {
 }
 
 
-//ADD A NEW PROJECT
 newProjectButton.addEventListener("click", () => {
 
   const emptyProject = {
@@ -123,5 +120,4 @@ newProjectButton.addEventListener("click", () => {
 
 loadMoreBtn.addEventListener("click", renderProjects);
 
-//Initial
 renderProjects();

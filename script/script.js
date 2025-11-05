@@ -31,6 +31,7 @@ fetch("http://localhost:8080/posts")
                 favorite.forEach(fav => {
                     allFavorites.push(fav.posts.idPost);
                 });
+                localStorage.setItem("userFavorites", JSON.stringify(allFavorites));
                 loadMorePosts();
             })
             .catch(err => console.log(err.message));
@@ -60,11 +61,9 @@ function loadMorePosts() {
 }
 
 function renderPost(post) {
-    //POST CONTAINER 
     const container = document.createElement("section");
     container.classList.add("post__container");
 
-    //POST OWNER
     const divOwner = document.createElement("div");
     divOwner.classList.add("post__owner");
     const profileImg = document.createElement("img");
@@ -78,11 +77,9 @@ function renderPost(post) {
     divOwner.appendChild(profileName);
     container.appendChild(divOwner);
 
-    //POST CONTAINER_BELOW
     const divPostContent = document.createElement("div");
     divPostContent.classList.add("post__content");
 
-    //POST PROJECT
     const divProjectContent = document.createElement("div");
     divProjectContent.classList.add("project__content");
 
@@ -92,7 +89,6 @@ function renderPost(post) {
 
     divPostContent.appendChild(divProjectContent);
 
-    //POST BUTTONS
     const divPostDetails = document.createElement("div");
     divPostDetails.classList.add("post__details");
 
@@ -162,6 +158,8 @@ function renderPost(post) {
             favoriteImg.src = "../assets/alreadyFavoritedHeart.png";
             favoriteButton.classList.add("favorited__button");
             audio.play();
+            allFavorites.push(post.idPost);
+            localStorage.setItem("userFavorites", JSON.stringify(allFavorites));
 
             const favoriteObj = {
                 user: loggedUser,
@@ -187,6 +185,8 @@ function renderPost(post) {
             isFavorited = false;
             favoriteImg.src = "../assets/postFavoriteHeart.png";
             favoriteButton.classList.remove("favorited__button");
+            allFavorites = allFavorites.filter(favId => favId !== post.idPost);
+            localStorage.setItem("userFavorites", JSON.stringify(allFavorites));
 
             fetch(`http://localhost:8080/favorite/${post.idPost}/${loggedUser.idUser}`, {
                 method: "DELETE",
@@ -222,7 +222,6 @@ function renderPost(post) {
         window.location.href = "../pages/viewProject.html";
     });
 
-    //APPENDING ALL
     divPostDetails.appendChild(likeButton);
     divPostDetails.appendChild(dislikeButton);
     divPostDetails.appendChild(favoriteButton);

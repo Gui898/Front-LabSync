@@ -29,8 +29,6 @@ body{
     color: var(--main-font-color);
 }
 
-/*General Header*/
-
 header{
     background-color: var(--third-color);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
@@ -91,8 +89,6 @@ nav{
     align-items: center;
     gap: 1.5rem;
 }
-
-/*ANIMATIONS*/
 
 @keyframes pulse {
   0% {

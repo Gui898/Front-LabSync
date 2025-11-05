@@ -146,7 +146,7 @@ main{
     scrollbar-width: none;
     width: 60%;
     overflow-wrap: break-word;
-    user-select: none; /*Text can copy, but not edit*/ /*Or use none, to don't copy*/
+    user-select: none;
 }
 
 .project__content *{

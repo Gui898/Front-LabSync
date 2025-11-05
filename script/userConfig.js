@@ -23,14 +23,12 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 const aboutMe = document.getElementById("aboutMe");
 
-//INITIALIZE USER IN THE INPUTS
 userName.value = loggedUser.name;
 surname.value = loggedUser.surname;
 email.value = loggedUser.email;
 password.value = loggedUser.password;
 aboutMe.value = loggedUser.aboutMe;
 
-//EXIT USER
 document.getElementById("exitBt").addEventListener("click", (e) => {
     e.preventDefault();
     const exitAudio = new Audio("../assets/audio/exit.mp3");
@@ -39,12 +37,11 @@ document.getElementById("exitBt").addEventListener("click", (e) => {
     setTimeout(() => {window.location.href = "../pages/login.html";}, 1300)
 });
 
-//SAVE USER ALTERATIONS
 document.getElementById("editForm").addEventListener("submit", (e) => {
     e.preventDefault();
 
     loggedUser = {
-        ...loggedUser, // kepp data, till that were here before
+        ...loggedUser,
         name: userName.value,
         surname: surname.value,
         email: email.value,
@@ -83,11 +80,9 @@ if(loggedUser.readerOrAuthor){
     document.getElementById("projectDrafts").style.display = "none";
 }
 
-//DELETE USER
 document.getElementById("deleteUser").addEventListener("click", (e) => {
     e.preventDefault();
 
-    //Deleting user's favorites
     fetch("http://localhost:8080/favorite/user/" + loggedUser.idUser, {
         method: "DELETE",
     })
@@ -114,7 +109,6 @@ document.getElementById("deleteUser").addEventListener("click", (e) => {
             .catch(err => console.log(err));
     });  
 
-    //Deleting user's posts
     fetch("http://localhost:8080/posts/user/" + loggedUser.idUser, {
         method: "DELETE",
     })
@@ -127,7 +121,6 @@ document.getElementById("deleteUser").addEventListener("click", (e) => {
         })
         .catch(err => console.log(err));
 
-    //Deleting user's projects
     fetch("http://localhost:8080/project/user/" + loggedUser.idUser, {
         method: "DELETE"
     })
@@ -140,7 +133,6 @@ document.getElementById("deleteUser").addEventListener("click", (e) => {
         })
         .catch(err => console.log(err));
 
-    //Deleting user
     fetch("http://localhost:8080/user/" + loggedUser.idUser, {
         method: "DELETE",
     })

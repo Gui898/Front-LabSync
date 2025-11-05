@@ -4,8 +4,6 @@ body{
     background-color: var(--second-color);
 }
 
-/*Config Header*/
-
 .exit__bt{
     background-color: transparent;
     color: var(--main-font-color);
@@ -22,8 +20,6 @@ body{
     transform: scale(1.1);
     transition: 0.3s ease-in-out;
 }
-
-/*Config Body*/
 
 main{
     background-color: var(--primary-color);

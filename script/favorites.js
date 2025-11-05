@@ -48,7 +48,6 @@ function renderProjects() {
     
     card.innerHTML = card.textContent.trim();
 
-    //]EDITA AQUI AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     card.addEventListener("click", () => {
       localStorage.setItem("currentPostView", JSON.stringify(f));
       window.location.href = "../pages/viewProject.html";
@@ -67,5 +66,4 @@ function renderProjects() {
 
 loadMoreBtn.addEventListener("click", renderProjects);
 
-// inicial
 renderProjects();

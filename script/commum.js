@@ -1,10 +1,8 @@
-//SHOWING THE NAME
 const userKey = "loggedUser";
 const userNameHeader = document.getElementById("userName");
 
 userNameHeader.innerText = JSON.parse(localStorage.getItem(userKey)).name || " ";
 
-//VOICE RECOGNITION
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
 const commandMap = {

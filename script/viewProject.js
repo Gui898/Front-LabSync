@@ -33,7 +33,12 @@ function initializer() {
         likeCount.textContent = postDetailed.posts.likes;
     } else {
 
-        isFavorited = allFavorites.includes(postDetailed.idPost);
+        if(allFavorites == null){
+            allFavorites = [];
+            isFavorited = false;
+        } else {
+            isFavorited = true;
+        }
 
         if(isFavorited){
             imgFav.src = "../assets/alreadyFavoritedHeart.png";
